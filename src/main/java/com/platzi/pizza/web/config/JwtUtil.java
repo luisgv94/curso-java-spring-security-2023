@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class JwtUtil {
-    private static String SECRET_KEY = "pl4tz1_p1zz4";
-    private static Algorithm ALGORITHM = Algorithm.HMAC256(SECRET_KEY);
+    private static final String SECRET_KEY = "pl4tz1_p1zz4";
+    private static final Algorithm ALGORITHM = Algorithm.HMAC256(SECRET_KEY);
 
     public String create(String username) {
         return JWT.create()

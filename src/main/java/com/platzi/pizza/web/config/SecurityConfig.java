@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
@@ -46,6 +45,27 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+    /* New approach to configure filterChain */
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//
+//        http
+//                .csrf().disable()
+//                .cors()
+//                .and()
+//                .authorizeHttpRequests()
+//                .requestMatchers(HttpMethod.GET, "/api/pizzas/**").hasAnyRole("ADMIN", "CUSTOMER")
+//                .requestMatchers(HttpMethod.POST, "/api/pizzas/**").hasRole("ADMIN")
+//                .requestMatchers(HttpMethod.PUT).hasRole("ADMIN")
+//                .requestMatchers("/api/orders/**").hasRole("ADMIN")
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .httpBasic();
+//
+//        return http.build();
+//    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
